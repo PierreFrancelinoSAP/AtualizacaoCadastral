@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="selectDialog"
+		title="Grau de parentesco"
+		items="{
+			path: '/grauParentescoSet',
+			sorter: {
+				path: 'CodigoGrauParentesco',
+				descending: false
+			}
+		}"
+		search=".onValueHelpDialogSearch"
+		confirm=".onValueHelpDialogClose"
+		cancel=".onValueHelpDialogClose">
+		<StandardListItem
+			title="{DescricaoGrauParentesco}"
+			description="{CodigoGrauParentesco}" />
+	</SelectDialog>
+</core:FragmentDefinition>

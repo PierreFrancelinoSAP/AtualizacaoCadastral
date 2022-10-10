@@ -1,0 +1,185 @@
+<mvc:View
+    controllerName="zatualizacaocadastral.controller.Dependentes"
+    xmlns="sap.uxap"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout">
+
+    <m:Page
+    busy="{/isBusy}">
+    <ObjectPageLayout id="objectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title text="{/NomeColaborador}" wrapping="true"/>
+                </expandedHeading>
+
+                <snappedHeading>
+                    <m:FlexBox fitContainer="true" alignItems="Center">
+                        <m:Image src="/sap/opu/odata/sap/ZGWHCM_EMPLOYEE_SRV/fotoSet(Pernr='12345678')/$value" width='50%' height='60%' />
+                        <m:Title text="{/NomeColaborador}" wrapping="true" />
+                        </m:FlexBox>
+                </snappedHeading>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+    <headerContent>
+        <m:FlexBox wrap="Wrap">
+            <m:Image src="/sap/opu/odata/sap/ZGWHCM_EMPLOYEE_SRV/fotoSet(Pernr='12345678')/$value" width='80%' height='90%' />	
+
+            <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                <m:ObjectStatus title="Nº Pessoal" text="{/Pernr}"/>
+                <m:ObjectStatus title="Grupo de empregados" text="{/GrupoEmpregado} - {/GrupoEmpregadoTexto}"/>
+                <m:ObjectStatus title="Subgrupo de empregados" text="{/SubgrupoEmpregado} - {/SubgrupoEmpregadoTexto}"/>
+                <m:ObjectStatus title="Área de recursos humanos" text="{/AreaRh} - {/AreaRhTexto}"/>
+            </layout:VerticalLayout>
+
+            <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                <m:ObjectStatus title="Celular corporativo" text="{/CelularCorporativo}"/>
+                <m:ObjectStatus title="E-mail corporativo" text="{/EmailCorporativo}"/>
+            </layout:VerticalLayout>
+        </m:FlexBox>
+    </headerContent>
+        <sections>
+            <ObjectPageSection>
+            <subSections>
+                <ObjectPageSubSection
+                    id="dadosPessoaisSubSection"
+                    title="Edição Dependentes">
+                    <blocks> 
+                        <ObjectPageLazyLoader
+                            id="pageLoaderId">
+                            <m:VBox items="{/dependentes/results}">
+                                <m:Panel expandable="true" expanded="false" width="auto">
+
+                                    <m:headerToolbar>
+                                        <m:Toolbar height="3rem">
+                                            <!-- <m:Text text="{title}" /> -->
+                                            <m:Text text="{PrimeiroNome} {Sobrenome} - {GrauParentescoTexto}" />
+                                            <m:ToolbarSpacer />
+                                            <m:Button icon="sap-icon://add" press="doAdd" />
+                                            <m:Button icon="sap-icon://less" press="doDelete" />
+                                        </m:Toolbar>
+                                    </m:headerToolbar>
+                                    <m:content>
+                                        <!-- <m:Text text="{content}" /> -->
+
+                                        <f:SimpleForm
+                                        columnsL="2"
+                                        columnsM="2"    
+                                        editable="true"
+                                        layout="ResponsiveGridLayout">
+                                        <f:content>
+                                            <core:Title text="Dados Pessoais"/>
+                                                <m:Label
+                                                    text="Nome"
+                                                    labelFor="inputNome"/>
+                                                <m:Input
+                                                    id="inputNome"
+                                                    value="{PrimeiroNome}"
+                                                    type="Text"
+                                                    width="100%"
+                                                    placeholder="Nome"
+                                                    />
+                                                <m:Label
+                                                    labelFor="inputSobrenome"
+                                                    text="Sobrenome"/>
+                                                <m:Input
+                                                    id="inputSobrenome"
+                                                    value="{Sobrenome}"
+                                                    type="Text"
+                                                    width="100%"
+                                                    maxLength="60"
+                                                    placeholder="Sobrenome"/>
+                                                <m:Label
+                                                    labelFor="inputGrauParentesco"
+                                                    text="Grau de parentesco"/>
+                                                <m:Input
+                                                    id="inputGrauParentesco"
+                                                    
+                                                    placeholder="Grau de parentesco"
+                                                    showSuggestion="true"
+                                                    showValueHelp="true"
+                                                    value="{GrauParentescoTexto}"
+                                                    valueHelpRequest=".onValueHelpRequest"
+                                                    suggestionItems="{/grauParentescoSet}"
+                                                    suggestionItemSelected=".onSuggestionItemSelected">
+                                                    <m:suggestionItems>
+                                                        <core:ListItem
+                                                            key="{CodigoGrauParentesco}"
+                                                            text="{DescricaoGrauParentesco}"
+                                                            additionalText="{CodigoGrauParentesco}" />
+                                                    </m:suggestionItems>
+                                                </m:Input>               
+                                                <!-- <m:Input
+                                                    id="inputGrauParentesco"
+                                                    value="{GrauParentesco}"
+                                                    type="Text"
+                                                    width="100%"
+                                                    maxLength="60"
+                                                    placeholder="Grau de parentesco"/> -->
+                                                <m:Label
+                                                    labelFor="inputDataNascimento"
+                                                    text="Data de Nascimento"/>    
+                                                <m:Input
+                                                    id="inputDataNascimento"
+                                                    value="{DataNascimento}"
+                                                    type="Text"
+                                                    width="100%"
+                                                    maxLength="60"
+                                                    placeholder="Data de nascimento"/>            
+                                        </f:content>
+                                        <core:Title text="IR"/>
+											<m:Label
+												labelFor="inputCpf"
+												text="CPF"/>
+											<m:MaskInput 
+												id="inputCpf"
+												value="{Cpf}"
+												mask="999 999 999-99" 
+												placeholderSymbol="." 
+												placeholder="CPF"  
+												width="100%"/>
+                                            <m:Label
+												labelFor="inputIr"
+												text="Incluir como dependente IR"/>    
+                                            <m:Input
+                                                id="inputIr"
+                                                value="{DependenteIr}"
+                                                type="Flag"
+                                                width="100%"
+                                                maxLength="60"
+                                                placeholder="Dependente IR"/>
+                                    </f:SimpleForm>
+
+                                    </m:content>
+                                </m:Panel>
+                            </m:VBox>
+        
+                        </ObjectPageLazyLoader>
+                    </blocks>
+                </ObjectPageSubSection>
+            </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+    <m:footer>
+        <m:OverflowToolbar id="otbFooter">
+            <m:Button
+                id="buttonMessagePopover"
+                icon="sap-icon://alert"
+                text="{=${message>/}.length}"
+                visible="{=${message>/}.length > 0}"
+                type="Emphasized"
+                press="onMessagePopoverPress">
+            </m:Button>
+            <m:ToolbarSpacer/>
+            <m:Button type="Accept" text="Salvar" press="onActionSave"/>
+            <m:Button text="Limpar Mensagens" press="onClearPress"/>
+        </m:OverflowToolbar>
+    </m:footer>
+</m:Page>   
+
+</mvc:View>

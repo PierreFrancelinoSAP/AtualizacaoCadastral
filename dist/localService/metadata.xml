@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGWHCM_EMPLOYEE_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Nº pessoal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NomeColaborador" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Nome completo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TelefoneCelular" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="ID de sistema" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TelefoneContato" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="ID de sistema" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CelularCorporativo" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="ID de sistema" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmailParticular" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="ID de sistema" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmailCorporativo" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="ID de sistema" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rua" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Rua e nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Numero" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bairro" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Bairro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Complemento" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ID habitação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cidade" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Cidade" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cep" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Cód.post./loc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Estado" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Região" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pais" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="País" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="documentoSet" Relationship="ZGWHCM_EMPLOYEE_SRV.headerToDocumento" FromRole="FromRole_headerToDocumento" ToRole="ToRole_headerToDocumento"/>
+                <NavigationProperty Name="dependenteSet" Relationship="ZGWHCM_EMPLOYEE_SRV.headerToDependente" FromRole="FromRole_headerToDependente" ToRole="ToRole_headerToDependente"/>
+            </EntityType>
+            <EntityType Name="documento" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Nº pessoal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CarteiraHabilitacao" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Nr. Cart. Habilit." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CarteiraHabilitacaoContent" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CARTEIRA_HABILITACAO_CONTENT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CarteiraHabilitacaoType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CARTEIRA_HABILITACAO_TYPE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CarteiraHabilitacaoName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CARTEIRA_HABILITACAO_NAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CertificadoReservista" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Nr. Cert. Militar" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CertificadoReservistaContent" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CERTIFICADO_RESERVISTA_CONTENT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CertificadoReservistaType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CERTIFICADO_RESERVISTA_TYPE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CertificadoReservistaName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CERTIFICADO_RESERVISTA_NAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TituloEleitor" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Nr. Título Eleitor" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TituloEleitorContent" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="TITULO_ELEITOR_CONTENT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TituloEleitorType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="TITULO_ELEITOR_TYPE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TituloEleitorName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="TITULO_ELEITOR_NAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CartaoSus" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Cart. Nacional Saúde" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CartaoSusContent" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CARTAO_SUS_CONTENT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CartaoSusType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CARTAO_SUS_TYPE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CartaoSusName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CARTAO_SUS_NAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="header" Relationship="ZGWHCM_EMPLOYEE_SRV.headerToDocumento" FromRole="ToRole_headerToDocumento" ToRole="FromRole_headerToDocumento"/>
+            </EntityType>
+            <EntityType Name="dependente" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Nº pessoal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PrimeiroNome" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="1º nome" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SegundoNome" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Segundo nome" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sobrenome" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Sobrenome" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GrauParentesco" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Membro família" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sexo" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Fem." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DataNascimento" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Data nasc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cpf" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Nº CPF" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DependenteIr" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Imp.de Renda" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="header" Relationship="ZGWHCM_EMPLOYEE_SRV.headerToDependente" FromRole="ToRole_headerToDependente" ToRole="FromRole_headerToDependente"/>
+            </EntityType>
+            <Association Name="headerToDependente" sap:content-version="1">
+                <End Type="ZGWHCM_EMPLOYEE_SRV.header" Multiplicity="1" Role="FromRole_headerToDependente"/>
+                <End Type="ZGWHCM_EMPLOYEE_SRV.dependente" Multiplicity="*" Role="ToRole_headerToDependente"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_headerToDependente">
+                        <PropertyRef Name="Pernr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_headerToDependente">
+                        <PropertyRef Name="Pernr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="headerToDocumento" sap:content-version="1">
+                <End Type="ZGWHCM_EMPLOYEE_SRV.header" Multiplicity="1" Role="FromRole_headerToDocumento"/>
+                <End Type="ZGWHCM_EMPLOYEE_SRV.documento" Multiplicity="*" Role="ToRole_headerToDocumento"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_headerToDocumento">
+                        <PropertyRef Name="Pernr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_headerToDocumento">
+                        <PropertyRef Name="Pernr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZGWHCM_EMPLOYEE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="headerSet" EntityType="ZGWHCM_EMPLOYEE_SRV.header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="documentoSet" EntityType="ZGWHCM_EMPLOYEE_SRV.documento" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="dependenteSet" EntityType="ZGWHCM_EMPLOYEE_SRV.dependente" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="headerToDependenteSet" Association="ZGWHCM_EMPLOYEE_SRV.headerToDependente" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="headerSet" Role="FromRole_headerToDependente"/>
+                    <End EntitySet="dependenteSet" Role="ToRole_headerToDependente"/>
+                </AssociationSet>
+                <AssociationSet Name="headerToDocumentoSet" Association="ZGWHCM_EMPLOYEE_SRV.headerToDocumento" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="headerSet" Role="FromRole_headerToDocumento"/>
+                    <End EntitySet="documentoSet" Role="ToRole_headerToDocumento"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://saperd.dcstara.com.br:50000/sap/opu/odata/sap/ZGWHCM_EMPLOYEE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://saperd.dcstara.com.br:50000/sap/opu/odata/sap/ZGWHCM_EMPLOYEE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

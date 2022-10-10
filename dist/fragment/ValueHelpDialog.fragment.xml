@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="selectDialog"
+		title="Países"
+		items="{
+			path: '/paisSet',
+			sorter: {
+				path: 'CodigoPais',
+				descending: false
+			}
+		}"
+		search=".onValueHelpDialogSearch"
+		confirm=".onValueHelpDialogClose"
+		cancel=".onValueHelpDialogClose">
+		<StandardListItem
+			title="{DescricaoPais}"
+			description="{CodigoPais}" />
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,38 @@
+<mvc:View
+    controllerName="zatualizacaocadastral.controller.Base"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+    
+<tnt:ToolPage id="app">
+    <tnt:header>
+            <tnt:ToolHeader>
+              <tnt:content>
+                <Button id="sideNavigationToggleButton" icon="sap-icon://menu2" press=".onSideNavButtonPress"></Button>
+                <ToolbarSpacer></ToolbarSpacer>
+                <Label text="Atualização Cadastral"/>
+                <ToolbarSpacer></ToolbarSpacer>
+              </tnt:content>
+            </tnt:ToolHeader>
+    </tnt:header>
+ 
+    <tnt:sideContent>
+        <tnt:SideNavigation itemSelect="onItemSelect">
+            <tnt:NavigationList>
+                <tnt:NavigationListItem text="DadosPessoais"  key="DadosPessoais" icon="sap-icon://account"> </tnt:NavigationListItem>
+                <tnt:NavigationListItem text="Documentos" key="Documentos" icon="sap-icon://documents"> </tnt:NavigationListItem>
+                <tnt:NavigationListItem text="Escolaridade" key="Escolaridade" icon="sap-icon://study-leave"> </tnt:NavigationListItem>
+                <tnt:NavigationListItem text="Veiculos" key="Veiculos" icon="sap-icon://car-rental"> </tnt:NavigationListItem>
+                <tnt:NavigationListItem text="Dependentes" key="Dependentes" icon="sap-icon://collaborate"> </tnt:NavigationListItem>
+            </tnt:NavigationList>
+        </tnt:SideNavigation>    
+    </tnt:sideContent>
+   
+    <tnt:mainContents>
+            <App id="myPage"></App>
+    </tnt:mainContents>
+
+</tnt:ToolPage> 
+
+</mvc:View>

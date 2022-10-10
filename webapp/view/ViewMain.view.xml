@@ -1,0 +1,245 @@
+<mvc:View
+    controllerName="zatualizacaocadastral.controller.ViewMain"
+    xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:uxap="sap.uxap"
+	xmlns:form="sap.ui.comp.smartform" 
+    xmlns:forms="sap.ui.layout.form"
+	displayBlock="true"
+	xmlns="sap.m"
+	height="100%">
+<Page>
+	<uxap:ObjectPageLayout id="ObjectPageLayout" showAnchorBarPopover="false" upperCaseAnchorBar="false">
+		<uxap:headerTitle>
+	    	<uxap:ObjectPageDynamicHeaderTitle>
+				<uxap:heading>
+					<Title text="Atualização Cadastral"/>
+				</uxap:heading>
+			</uxap:ObjectPageDynamicHeaderTitle>
+		</uxap:headerTitle> 
+	 
+	 <uxap:sections>
+			<uxap:ObjectPageSection titleUppercase="false" title="sectionHeader">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection title="Dados Básicos" titleUppercase="false">
+                           <!-- <forms:SimpleForm editable="true" >
+                                <forms:content> -->
+								<l:VerticalLayout class="sapUiContentPadding" width="100%" >
+									<Label text="Nome" labelFor="inputNome"/>
+									<Input
+										id="inputNome"
+										maxLength="80"
+										placeholder="Nome"
+										enabled="false">
+									</Input>
+
+									<Label text="Nº Telefone Celular" labelFor="inputTelefoneCelular"/>
+									<Input
+										id="inputTelefoneCelular"
+										maxLength="15"
+										placeholder="Telefone Celular">
+									</Input>
+
+									<Label text="Telefone para contato" labelFor="inputTelefoneContato"/>
+									<Input
+										id="inputTelefoneContato"
+										maxLength="15"
+										placeholder="Telefone para contato">
+									</Input>
+
+									<Label text="Nº celular corporativo" labelFor="inputCelularCorporativo"/>
+									<Input
+										id="inputCelularCorporativo"
+										maxLength="15"
+										placeholder="Nº celular corporativo"
+										enabled="false">
+									</Input>
+
+									<Label text="E-mail particular" labelFor="inputEmailParticular"/>
+									<Input
+										id="inputEmailParticular"
+										maxLength="30"
+										placeholder="E-mail particular">
+									</Input>
+
+									<Label text="E-mail corporativo" labelFor="inputEmailCorporativo"/>
+									<Input
+										id="inputEmailCorporativo"
+										maxLength="30"
+										placeholder="E-mail corporativo"
+										enabled="false">
+									</Input>
+
+									<!-- <Label text="Logradouro" labelFor="inputLogradouro"/>
+									<Input
+										id="inputLogradouro"
+										placeholder="Logradouro">
+									</Input>	 -->
+
+									<Label text="Rua" labelFor="inputRua"/>
+									<Input
+										id="inputRua"
+										maxLength="60"
+										placeholder="Rua">
+									</Input>
+
+									<Label text="Número" labelFor="inputNumero"/>
+									<Input
+										id="inputNumero"
+										maxLength="10"
+										placeholder="Número">
+									</Input>
+
+									<Label text="Bairro" labelFor="inputBairro"/>
+									<Input
+										id="inputBairro"
+										maxLength="40"
+										placeholder="Bairro">
+									</Input>
+
+									<Label text="Complemento" labelFor="inputComplemento"/>
+									<Input
+										id="inputComplemento"
+										maxLength="10"
+										placeholder="Complemento">
+									</Input>
+
+									<Label text="Cidade" labelFor="inputCidade"/>
+									<Input
+										id="inputCidade"
+										maxLength="40"
+										placeholder="Cidade">
+									</Input>
+
+									<Label text="CEP" labelFor="inputCep"/>
+									<Input
+										id="inputCep"
+										maxLength="10"
+										placeholder="CEP">
+									</Input>
+
+									<Label text="Estado" labelFor="inputEstado"/>
+									<Input
+										id="inputEstado"
+										placeholder="Estado">
+									</Input>
+
+									<Label text="País" labelFor="inputPais"/>
+									<Input
+										id="inputPais"
+										textFormatMode="KeyValue"
+										placeholder="País"
+										showSuggestion="true"
+										showValueHelp="true"
+										valueHelpRequest=".onValueHelpRequest"
+										suggestionItems="{/paisSet}"
+										suggestionItemSelected=".onSuggestionItemSelected">
+										<suggestionItems>
+											<core:ListItem
+												key="{CodigoPais}"
+												text="{DescricaoPais}"
+												additionalText="{CodigoPais}" />
+										</suggestionItems>
+									</Input>
+								</l:VerticalLayout>	
+                                <!-- </forms:content> 
+							</forms:SimpleForm> -->
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection titleUppercase="false" title="sectionDocumentos">
+			    <uxap:subSections>
+				    <uxap:ObjectPageSubSection title="Documentos" titleUppercase="false">
+						 <l:VerticalLayout class="sapUiContentPadding" width="100%" >
+							<!-- <Label text="Carteira Nacional de Habilitação"/>
+							<Label text="Certificado de Reservista"/>
+							<Label text="Título de Eleitor"/>
+							<Label text="Cartão SUS"/> -->
+						</l:VerticalLayout>	
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+
+			<uxap:ObjectPageSection titleUppercase="false" title="sectionEscolaridade">
+			    <uxap:subSections>
+				    <uxap:ObjectPageSubSection title="Escolaridade" titleUppercase="false">
+						 <l:VerticalLayout class="sapUiContentPadding" width="100%" >
+							<!-- <Label text="Grau de Instrução" labelFor="inputGrauInstrucao"/>
+							<Input
+								id="inputGrauInstrucao"
+								placeholder="Grau Instrução">
+							</Input> 
+
+							<Label text="Instituição" labelFor="inputInstituicao"/>
+							<Input
+								id="inputInstituicao"
+								placeholder="Instituição">
+							</Input>
+
+							<Label text="Data de Início" labelFor="inputDataInicio"/>
+							<Input
+								id="inputDataInicio"
+								placeholder="Data de Início">
+							</Input>
+
+							<Label text="Data de Conclusão" labelFor="inputDataConclusao"/>
+							<Input
+								id="inputDataConclusao"
+								placeholder="Data de Conclusão">
+							</Input>
+
+							<Label text="Curso" labelFor="inputCurso"/>
+							<Input
+								id="inputCurso"
+								placeholder="Curso">
+							</Input> -->
+						</l:VerticalLayout>	
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+
+			<uxap:ObjectPageSection titleUppercase="false" title="sectionVeiculos">
+			    <uxap:subSections>
+				    <uxap:ObjectPageSubSection title="Veículos" titleUppercase="false">
+						 <l:VerticalLayout class="sapUiContentPadding" width="100%" >
+							
+						</l:VerticalLayout>	
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+
+			<uxap:ObjectPageSection titleUppercase="false" title="sectionDependentes">
+			    <uxap:subSections>
+				    <uxap:ObjectPageSubSection title="Dependentes" titleUppercase="false">
+						 <l:VerticalLayout class="sapUiContentPadding" width="100%" >
+							
+						</l:VerticalLayout>	
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+
+			</uxap:sections>        
+  </uxap:ObjectPageLayout>
+
+
+	<footer>
+		    <OverflowToolbar id="otbFooter">
+                <Button
+                    id="buttonMessagePopover"
+                    icon="sap-icon://alert"
+                    text="{=${message>/}.length}"
+                    visible="{=${message>/}.length > 0}"
+                    type="Emphasized"
+                    press="onMessagePopoverPress">
+                </Button>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Salvar" press="onActionSave"/>
+                <Button text="Limpar Mensagens" press="onClearPress"/>
+			</OverflowToolbar>
+		</footer>
+
+</Page>
+
+</mvc:View>

@@ -1,0 +1,237 @@
+<mvc:View
+    controllerName="zatualizacaocadastral.controller.Veiculos"
+    xmlns="sap.uxap"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout">
+
+    <m:Page
+    busy="{/isBusy}">
+    <ObjectPageLayout id="objectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title text="{/NomeColaborador}" wrapping="true"/>
+                </expandedHeading>
+
+                <snappedHeading>
+                    <m:FlexBox fitContainer="true" alignItems="Center">
+                        <m:Image src="/sap/opu/odata/sap/ZGWHCM_EMPLOYEE_SRV/fotoSet(Pernr='12345678')/$value" width='50%' height='60%' />
+                        <m:Title text="{/NomeColaborador}" wrapping="true" />
+                        </m:FlexBox>
+                </snappedHeading>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+    <headerContent>
+        <m:FlexBox wrap="Wrap">
+            <m:Image src="/sap/opu/odata/sap/ZGWHCM_EMPLOYEE_SRV/fotoSet(Pernr='12345678')/$value" width='80%' height='90%' />	
+
+            <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                <m:ObjectStatus title="Nº Pessoal" text="{/Pernr}"/>
+                <m:ObjectStatus title="Grupo de empregados" text="{/GrupoEmpregado} - {/GrupoEmpregadoTexto}"/>
+                <m:ObjectStatus title="Subgrupo de empregados" text="{/SubgrupoEmpregado} - {/SubgrupoEmpregadoTexto}"/>
+                <m:ObjectStatus title="Área de recursos humanos" text="{/AreaRh} - {/AreaRhTexto}"/>
+            </layout:VerticalLayout>
+
+            <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                <m:ObjectStatus title="Celular corporativo" text="{/CelularCorporativo}"/>
+                <m:ObjectStatus title="E-mail corporativo" text="{/EmailCorporativo}"/>
+            </layout:VerticalLayout>
+        </m:FlexBox>
+    </headerContent>
+        <sections>
+            <ObjectPageSection>
+            <subSections>
+                <ObjectPageSubSection
+                    id="dadosPessoaisSubSection"
+                    title="Edição Veículos">
+                    <blocks> 
+                        <ObjectPageLazyLoader
+                            id="pageLoaderId">
+                            <f:SimpleForm
+                                columnsL="2"
+                                columnsM="2"
+                                editable="true"
+                                layout="ResponsiveGridLayout">
+                                <f:content>
+                                    <core:Title text="Endereço"/>
+                                        <m:Label
+                                            text="Nome"
+                                            labelFor="inputNome"/>
+                                        <m:Input
+                                            value="{/NomeColaborador}"
+                                            id="inputNome"
+                                            type="Text"
+                                            width="100%"
+                                            placeholder="Nome"
+                                            enabled="false"/>
+                                        <m:Label
+                                            labelFor="inputRua"
+                                            text="Rua"/>
+                                        <m:Input
+                                            value="{/Rua}"
+                                            id="inputRua"
+                                            type="Text"
+                                            width="100%"
+                                            maxLength="60"
+                                            placeholder="Rua"/>
+                                        <m:Label
+                                            labelFor="inputNumero"
+                                            text="Número"/>
+                                        <m:Input
+                                            value="{/Numero}"
+                                            id="inputNumero"
+                                            type="Text"
+                                            width="100%"
+                                            maxLength="10"
+                                            placeholder="Número"/>
+                                        <m:Label
+                                            labelFor="inputBairro"
+                                            text="Bairro"/>
+                                        <m:Input
+                                            value="{/Bairro}"
+                                            id="inputBairro"
+                                            type="Text"
+                                            width="100%"
+                                            maxLength="40"
+                                            placeholder="Bairro"/>
+                                        <m:Label
+                                            labelFor="inputComplemento"
+                                            text="Complemento"/>
+                                        <m:Input
+                                            value="{/Complemento}"
+                                            id="inputComplemento"
+                                            type="Text"
+                                            width="100%"
+                                            maxLength="10"
+                                            placeholder="Complemento"/>
+                                        <m:Label
+                                            labelFor="inputCidade"
+                                            text="Cidade"/>
+                                        <m:Input
+                                            value="{/Cidade}"
+                                            id="inputCidade"
+                                            type="Text"
+                                            width="100%"
+                                            maxLength="40"
+                                            placeholder="Cidade"/>
+                                        <m:Label
+                                            labelFor="inputCep"
+                                            text="CEP"/>
+                                        <m:Input
+                                            value="{/Cep}"
+                                            id="inputCep"
+                                            type="Text"
+                                            width="100%"
+                                            maxLength="10"
+                                            placeholder="CEP"/>
+                                        <m:Label
+                                            labelFor="inputEstado"
+                                            text="Estado"/>
+                                        <m:Input
+                                            value="{/Estado}"
+                                            id="inputEstado"
+                                            type="Text"
+                                            width="100%"
+                                            placeholder="Estado"/>
+                                        <m:Label
+                                            labelFor="inputPais"
+                                            text="País"/> 
+                                        <m:Input
+                                            id="inputPais"
+                                            textFormatMode="KeyValue"
+                                            placeholder="País"
+                                            showSuggestion="true"
+                                            showValueHelp="true"
+                                            valueHelpRequest=".onValueHelpRequest"
+                                            suggestionItems="{/oOdataModel/paisSet}"
+                                            suggestionItemSelected=".onSuggestionItemSelected">
+                                            <m:suggestionItems>
+                                                <core:ListItem
+                                                    key="{CodigoPais}"
+                                                    text="{DescricaoPais}"
+                                                    additionalText="{CodigoPais}" />
+                                            </m:suggestionItems>
+                                        </m:Input>       
+                                    <core:Title text="Contato" />
+                                        <m:Label
+                                            labelFor="inputTelefoneCelular"
+                                            text="Nº Telefone Celular"/>
+                                        <m:Input
+                                            value="{/TelefoneCelular}"
+                                            
+                                            id="inputTelefoneCelular"
+                                            type="Tel"
+                                            width="100%"
+                                            maxLength="15"
+                                            placeholder="Telefone Celular"/>
+                                        <m:Label
+                                            labelFor="inputTelefoneContato"
+                                            text="Telefone para contato"/>
+                                        <m:Input
+                                            value="{/TelefoneContato}"
+                                            id="inputTelefoneContato"
+                                            type="Tel"
+                                            width="100%"
+                                            maxLength="15"
+                                            placeholder="Telefone para contato"/>
+                                        <m:Label
+                                            labelFor="inputCelularCorporativo"
+                                            text="Nº celular corporativo"/>
+                                        <m:Input
+                                            value="{/CelularCorporativo}"
+                                            id="inputCelularCorporativo"
+                                            type="Tel"
+                                            width="100%"
+                                            placeholder="Nº celular corporativo"
+                                            enabled="false"/>
+                                        <m:Label
+                                            labelFor="inputEmailParticular"
+                                            text="E-mail particular"/>
+                                        <m:Input
+                                            value="{/EmailParticular}"
+                                            id="inputEmailParticular"
+                                            type="Email"
+                                            width="100%"
+                                            maxLength="30"
+                                            placeholder="E-mail particular"/>
+                                        <m:Label
+                                            labelFor="inputEmailCorporativo"
+                                            text="E-mail corporativo"/>
+                                        <m:Input
+                                            value="{/EmailCorporativo}"
+                                            id="inputEmailCorporativo"
+                                            type="Email"
+                                            width="100%"
+                                            maxLength="30"
+                                            placeholder="E-mail corporativo"
+                                            enabled="false"/>       
+                                </f:content>
+                            </f:SimpleForm>
+                        </ObjectPageLazyLoader>
+                    </blocks>
+                </ObjectPageSubSection>
+            </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+    <m:footer>
+        <m:OverflowToolbar id="otbFooter">
+            <m:Button
+                id="buttonMessagePopover"
+                icon="sap-icon://alert"
+                text="{=${message>/}.length}"
+                visible="{=${message>/}.length > 0}"
+                type="Emphasized"
+                press="onMessagePopoverPress">
+            </m:Button>
+            <m:ToolbarSpacer/>
+            <m:Button type="Accept" text="Salvar" press="onActionSave"/>
+            <m:Button text="Limpar Mensagens" press="onClearPress"/>
+        </m:OverflowToolbar>
+    </m:footer>
+</m:Page>   
+</mvc:View>

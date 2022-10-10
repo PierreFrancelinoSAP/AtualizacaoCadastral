@@ -1,0 +1,167 @@
+{
+  "_version": "1.32.0",
+  "sap.app": {
+    "id": "zatualizacaocadastral",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZGWHCM_EMPLOYEE_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.102.1",
+      "libs": {
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zatualizacaocadastral.i18n.i18n"
+        }
+      },
+      "ODataModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay" 
+        }
+      },
+      "JSONModel" : {
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {
+          "defaultBindingMode": "TwoWay" 
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "rootView": {
+      "viewName": "zatualizacaocadastral.view.Base",
+      "type": "XML",
+      "async": true,
+      "id": "Base"
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "zatualizacaocadastral.view",
+        "controlAggregation": "pages",
+        "controlId": "myPage"
+      },
+      "routes": [
+        {
+          "name": "Default",
+          "pattern": "",
+          "target": ["DadosPessoais"]
+        },
+        {
+          "name": "DadosPessoais",
+          "pattern": "DadosPessoais",
+          "target": ["DadosPessoais"]
+        },
+        {
+          "name": "Documentos",
+          "pattern": "Documentos",
+          "target": ["Documentos"]
+        },
+        {
+          "name": "Escolaridade",
+          "pattern": "Escolaridade",
+          "target": ["Escolaridade"]
+        },
+        {
+          "name": "Veiculos",
+          "pattern": "Veiculos",
+          "target": ["Veiculos"]
+        },
+        {
+          "name": "Dependentes",
+          "pattern": "Dependentes",
+          "target": ["Dependentes"]
+        }
+      ],
+      "targets": {
+        "TargetBase": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Base",
+          "viewName": "Base"
+        },
+        "DadosPessoais": {
+          "viewType": "XML", 
+          "viewId": "DadosPessoais",
+          "viewName": "DadosPessoais",
+          "controlAggregation": "pages"
+        },
+        "Documentos": {
+          "viewType": "XML",
+          "viewId": "Documentos",
+          "viewName": "Documentos",
+          "controlAggregation": "pages"
+        },
+        "Escolaridade": {
+          "viewType": "XML",
+          "viewId": "Escolaridade",
+          "viewName": "Escolaridade",
+          "controlAggregation": "pages"
+        },
+        "Veiculos": {
+          "viewType": "XML",
+          "viewId": "Veiculos",
+          "viewName": "Veiculos",
+          "controlAggregation": "pages"
+        },
+        "Dependentes": {
+          "viewType": "XML",
+          "viewId": "Dependentes",
+          "viewName": "Dependentes",
+          "controlAggregation": "pages"
+        }
+    }
+    }
+  }
+}
